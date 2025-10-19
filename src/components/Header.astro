@@ -10,8 +10,7 @@ const navItems = [
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="/">
-      <span class="brand-icon" aria-hidden="true">🧁</span>
-      <span class="brand-name">Bread'n'Sugar</span>
+      <img class="brand-logo" src="/BreadNSugar_Logo.svg" alt="Bread'n'Sugar"/>
     </a>
     <nav class="primary-nav" aria-label="Navegación principal">
       <ul>
@@ -48,14 +47,13 @@ const navItems = [
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.25rem;
-  color: var(--heading-color);
+  text-decoration: none;
 }
 
-.brand-icon {
-  font-size: 1.5rem;
+.brand-logo {
+  width: 110px;
+  max-width: 100%;
+  height: auto;
 }
 
 .primary-nav ul {
