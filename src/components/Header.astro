@@ -1,0 +1,120 @@
+---
+const navItems = [
+  { label: 'Sobre', href: '#sobre' },
+  { label: 'Galería', href: '#galeria' },
+  { label: 'Tienda', href: '#tienda' },
+  { label: 'Personalizados', href: '#personalizados' },
+  { label: 'Contacto', href: '#contacto' },
+];
+---
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/">
+      <span class="brand-icon" aria-hidden="true">🧁</span>
+      <span class="brand-name">Bread'n'Sugar</span>
+    </a>
+    <nav class="primary-nav" aria-label="Navegación principal">
+      <ul>
+        {navItems.map(({ label, href }) => (
+          <li>
+            <a href={href}>{label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <a class="cta" href="#personalizados">Pedir personalizado</a>
+  </div>
+</header>
+
+<style>
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 247, 241, 0.92);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-inner {
+  margin: 0 auto;
+  max-width: 80rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  color: var(--heading-color);
+}
+
+.brand-icon {
+  font-size: 1.5rem;
+}
+
+.primary-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.primary-nav a {
+  font-weight: 500;
+}
+
+.cta {
+  margin-left: auto;
+  border: 1px solid var(--accent-color);
+  border-radius: 999px;
+  color: var(--accent-color);
+  font-weight: 500;
+  padding: 0.45rem 1.25rem;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.cta:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+}
+
+@media (max-width: 900px) {
+  .header-inner {
+    flex-wrap: wrap;
+  }
+
+  .primary-nav {
+    order: 3;
+    width: 100%;
+  }
+
+  .primary-nav ul {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 0.75rem;
+  }
+
+  .cta {
+    order: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-inner {
+    gap: 1rem;
+  }
+
+  .primary-nav ul {
+    justify-content: flex-start;
+    gap: 0.75rem;
+  }
+}
+</style>

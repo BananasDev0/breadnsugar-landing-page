@@ -1,0 +1,87 @@
+---
+import Header from '../components/Header.astro';
+import Main from '../components/Main.astro';
+import '../styles/global.css';
+
+const {
+  title = "Bread'n'Sugar — Pastelería artesanal",
+  description = 'Pasteles personalizados con diseño minimalista y elegante.',
+} = Astro.props;
+
+const year = new Date().getFullYear();
+---
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <Header />
+    <Main>
+      <slot />
+    </Main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-copy">© {year} Bread'n'Sugar. Todos los derechos reservados.</p>
+        <nav class="footer-nav" aria-label="Enlaces legales">
+          <a href="#">Términos</a>
+          <a href="#">Privacidad</a>
+          <a href="#">Cookies</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-color);
+  background-color: rgba(255, 247, 241, 0.92);
+}
+
+.footer-inner {
+  margin: 0 auto;
+  max-width: 80rem;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.footer-copy {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-nav a {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    padding: 1.75rem 1rem;
+  }
+
+  .footer-nav {
+    gap: 1rem;
+  }
+}
+</style>

@@ -1,0 +1,435 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const galleryItems = [
+  'Pastel floral minimalista',
+  'Pastel acuarela',
+  'Pastel terrazzo',
+  'Pastel degradado',
+  'Pastel botanico',
+  'Pastel nude metálico',
+];
+
+const lineProducts = [
+  { name: 'Pastel de vainilla con frambuesa', price: '$650 MXN' },
+  { name: 'Pastel de chocolate y café', price: '$680 MXN' },
+  { name: 'Pastel de limón y amapola', price: '$620 MXN' },
+  { name: 'Pastel red velvet clásico', price: '$690 MXN' },
+  { name: 'Pastel de coco tostado', price: '$640 MXN' },
+  { name: 'Pastel de pistache y miel', price: '$720 MXN' },
+];
+---
+<BaseLayout>
+  <section id="hero" class="hero">
+    <p class="hero-tagline">Pastelería artesanal en CDMX</p>
+    <h1>Endulzamos la vida, un diseño a la vez.</h1>
+    <p class="hero-intro">
+      Pasteles personalizados diseñados con detalle, ingredientes frescos y una estética minimalista pensada para tus momentos especiales.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#tienda">Ver pasteles</a>
+      <a class="btn btn-outline" href="#personalizados">Personalizado</a>
+    </div>
+  </section>
+
+  <section id="sobre" class="about">
+    <div class="about-media" aria-hidden="true"></div>
+    <div class="about-content">
+      <span class="section-label">Sobre Nosotros</span>
+      <h2>Pasteles que celebran historias</h2>
+      <p>
+        En Bread'n'Sugar creemos que cada celebración merece un pastel que hable por sí mismo. Diseñamos de forma artesanal, cuidando cada textura, color y detalle para lograr piezas elegantes que transmitan calidez.
+      </p>
+      <p>
+        Nuestro enfoque minimalista permite que cada elemento tenga un propósito: sabores balanceados, acabados delicados y una experiencia de pedido clara y personalizada.
+      </p>
+    </div>
+  </section>
+
+  <section id="galeria" class="gallery">
+    <div class="section-heading">
+      <span class="section-label">Galería</span>
+      <h2>Un vistazo a nuestros pasteles</h2>
+      <p>Explora algunos de los diseños más recientes creados en nuestro taller.</p>
+    </div>
+    <div class="gallery-grid">
+      {galleryItems.map((item) => (
+        <figure>
+          <div class="gallery-thumb" aria-hidden="true"></div>
+          <figcaption>{item}</figcaption>
+        </figure>
+      ))}
+    </div>
+    <a class="gallery-link" href="https://www.instagram.com" target="_blank" rel="noreferrer">Ver Instagram</a>
+  </section>
+
+  <section id="tienda" class="products">
+    <div class="section-heading">
+      <span class="section-label">Pasteles de Línea</span>
+      <h2>Listos para ordenar</h2>
+      <p>Selecciona tu favorito y coordina la entrega a través de WhatsApp.</p>
+    </div>
+    <div class="product-grid">
+      {lineProducts.map(({ name, price }) => (
+        <article class="product-card">
+          <div class="product-image" aria-hidden="true"></div>
+          <div class="product-info">
+            <h3>{name}</h3>
+            <p class="product-price">{price}</p>
+            <a class="product-action" href="mailto:hola@breadnsugar.mx">Añadir</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="personalizados" class="custom-orders">
+    <div class="section-heading">
+      <span class="section-label">Pasteles Personalizados</span>
+      <h2>Cuéntanos sobre tu evento</h2>
+      <p>Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas.</p>
+    </div>
+    <form class="custom-form">
+      <fieldset>
+        <legend>Datos del cliente</legend>
+        <label>
+          Nombre completo
+          <input type="text" name="nombre" placeholder="María González" required />
+        </label>
+        <label>
+          Correo electrónico
+          <input type="email" name="correo" placeholder="hola@correo.com" required />
+        </label>
+        <label>
+          Teléfono / WhatsApp
+          <input type="tel" name="telefono" placeholder="55 1234 5678" required />
+        </label>
+      </fieldset>
+
+      <fieldset class="inline-fields">
+        <label>
+          Fecha del evento
+          <input type="date" name="fecha" required />
+        </label>
+        <label>
+          Número de personas
+          <input type="number" name="personas" min="0" placeholder="20" required />
+        </label>
+        <label>
+          Tipo de evento
+          <input type="text" name="evento" placeholder="Boda, cumpleaños..." />
+        </label>
+      </fieldset>
+
+      <label>
+        Enlace de referencia (Pinterest, Instagram...)
+        <input type="url" name="referencia" placeholder="https://" />
+      </label>
+
+      <label>
+        Descripción del pastel
+        <textarea name="descripcion" rows="4" placeholder="Colores, sabores, estilo..." required></textarea>
+      </label>
+
+      <div class="upload-area" role="button" tabindex="0">
+        <span>Arrastra tus referencias aquí o haz clic para subir archivos</span>
+      </div>
+
+      <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+    </form>
+  </section>
+
+  <section id="contacto" class="contact">
+    <div class="section-heading">
+      <span class="section-label">Contacto</span>
+      <h2>Estamos cerca de ti</h2>
+    </div>
+    <div class="contact-content">
+      <div class="contact-info">
+        <p><strong>Dirección:</strong> Col. Roma Norte, CDMX</p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/5215512345678" target="_blank" rel="noreferrer">55 1234 5678</a></p>
+        <p><strong>Instagram:</strong> <a href="https://instagram.com" target="_blank" rel="noreferrer">@breadnsugar.mx</a></p>
+        <p><strong>Correo:</strong> <a href="mailto:hola@breadnsugar.mx">hola@breadnsugar.mx</a></p>
+      </div>
+      <div class="map-placeholder" aria-hidden="true">Mapa próximamente</div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.hero {
+  text-align: center;
+  display: grid;
+  gap: 1rem;
+  align-items: center;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.hero-tagline {
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+}
+
+.hero-intro {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border-radius: 999px;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  color: var(--bg-color);
+}
+
+.btn-outline {
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+.btn-outline:hover {
+  background-color: transparent;
+}
+
+.about {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: center;
+}
+
+.about-media {
+  background: linear-gradient(135deg, var(--border-color), var(--accent-color));
+  border-radius: 1rem;
+  padding-bottom: 75%;
+}
+
+.about-content h2 {
+  margin-top: 0.5rem;
+}
+
+.section-label {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--accent-color);
+}
+
+.section-heading {
+  display: grid;
+  gap: 0.75rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.gallery {
+  display: grid;
+  gap: 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.gallery-thumb {
+  width: 100%;
+  padding-bottom: 100%;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(231, 183, 160, 0.35), rgba(107, 90, 88, 0.25));
+  border: 1px solid var(--border-color);
+}
+
+.gallery figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.gallery-link {
+  justify-self: center;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+}
+
+.gallery-link:hover {
+  border-color: currentColor;
+}
+
+.products {
+  display: grid;
+  gap: 2rem;
+}
+
+.product-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.product-card {
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 247, 241, 0.6);
+}
+
+.product-image {
+  background: linear-gradient(135deg, rgba(231, 183, 160, 0.35), rgba(255, 247, 241, 0.8));
+  padding-bottom: 70%;
+}
+
+.product-info {
+  padding: 1.5rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.product-info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.product-price {
+  margin: 0;
+  font-weight: 500;
+  color: var(--heading-color);
+}
+
+.product-action {
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+.custom-orders {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.custom-form {
+  border: 1px solid var(--border-color);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  display: grid;
+  gap: 1.5rem;
+  background-color: rgba(255, 247, 241, 0.65);
+}
+
+.custom-form fieldset {
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.custom-form legend {
+  padding: 0 0.5rem;
+  font-weight: 500;
+  color: var(--heading-color);
+}
+
+.custom-form label {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.custom-form input,
+.custom-form textarea {
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  background-color: #fff;
+}
+
+.custom-form input:focus,
+.custom-form textarea:focus {
+  outline: 2px solid rgba(231, 183, 160, 0.6);
+}
+
+.inline-fields {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.upload-area {
+  border: 2px dashed var(--border-color);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--text-color);
+  background-color: rgba(255, 247, 241, 0.4);
+}
+
+.contact {
+  display: grid;
+  gap: 2rem;
+}
+
+.contact-content {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.contact-info {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.map-placeholder {
+  border: 1px dashed var(--border-color);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  text-align: center;
+  font-weight: 500;
+  color: rgba(107, 90, 88, 0.75);
+}
+
+@media (max-width: 768px) {
+  .custom-form {
+    padding: 2rem;
+  }
+
+  .hero-actions {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .custom-form {
+    padding: 1.5rem;
+  }
+
+  .hero {
+    text-align: left;
+  }
+}
+</style>
