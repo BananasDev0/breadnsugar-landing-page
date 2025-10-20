@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroBanner from '../components/HeroBanner.astro';
+import AboutSection from '../components/AboutSection.astro';
 
 const galleryItems = [
   'Pastel floral minimalista',
@@ -23,19 +24,7 @@ const lineProducts = [
 <BaseLayout>
   <HeroBanner />
 
-  <section id="sobre" class="about">
-    <div class="about-media" aria-hidden="true"></div>
-    <div class="about-content">
-      <span class="section-label">Sobre Nosotros</span>
-      <h2>Pasteles que celebran historias</h2>
-      <p>
-        En Bread'n'Sugar creemos que cada celebración merece un pastel que hable por sí mismo. Diseñamos de forma artesanal, cuidando cada textura, color y detalle para lograr piezas elegantes que transmitan calidez.
-      </p>
-      <p>
-        Nuestro enfoque minimalista permite que cada elemento tenga un propósito: sabores balanceados, acabados delicados y una experiencia de pedido clara y personalizada.
-      </p>
-    </div>
-  </section>
+  <AboutSection />
 
   <section id="galeria" class="gallery">
     <div class="section-heading">
@@ -148,23 +137,6 @@ const lineProducts = [
 </BaseLayout>
 
 <style>
-.about {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  align-items: center;
-}
-
-.about-media {
-  background: linear-gradient(135deg, var(--border-color), var(--accent-color));
-  border-radius: 1rem;
-  padding-bottom: 75%;
-}
-
-.about-content h2 {
-  margin-top: 0.5rem;
-}
-
 .section-label {
   letter-spacing: 0.08em;
   text-transform: uppercase;

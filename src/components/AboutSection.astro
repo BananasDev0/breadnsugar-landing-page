@@ -1,0 +1,53 @@
+---
+const {
+  imageSrc = '/cake_main.jpeg',
+  imageAlt = "Pastel artesanal de Bread'n'Sugar",
+} = Astro.props;
+---
+<section id="sobre" class="about">
+  <img src={imageSrc} alt={imageAlt} loading="lazy" class="about-media"/>
+  <div class="about-content">
+    <span class="section-label">Sobre Nosotros</span>
+    <h2>Pasteles que celebran historias</h2>
+    <p>
+      En Bread'n'Sugar creemos que cada celebración merece un pastel que hable por sí mismo. Diseñamos de forma artesanal, cuidando cada textura, color y detalle para lograr piezas elegantes que transmitan calidez.
+    </p>
+    <p>
+      Nuestro enfoque minimalista permite que cada elemento tenga un propósito: sabores balanceados, acabados delicados y una experiencia de pedido clara y personalizada.
+    </p>
+  </div>
+</section>
+
+<style>
+.about {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: center;
+}
+
+.about-media {
+  border-radius: 1rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-content h2 {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .about {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .about-media {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+}
+</style>
