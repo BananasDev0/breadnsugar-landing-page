@@ -12,10 +12,15 @@
 
 <style>
 .hero {
-  text-align: center;
+  position: relative;
   display: grid;
   gap: 1rem;
   align-items: center;
+  text-align: center;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3.5rem);
+  background-image: linear-gradient(rgb(255 247 241 / 64%), rgb(255 247 241)), url(/pink_texture.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 .hero h1 {

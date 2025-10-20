@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro';
+import HeroBanner from '../components/HeroBanner.astro';
 import Main from '../components/Main.astro';
 import '../styles/global.css';
 
@@ -21,6 +22,7 @@ const year = new Date().getFullYear();
   </head>
   <body>
     <Header />
+    <HeroBanner />
     <Main>
       <slot />
     </Main>
