@@ -1,0 +1,176 @@
+---
+interface GalleryItem {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  items?: GalleryItem[];
+  instagramUrl?: string;
+  title?: string;
+  description?: string;
+  ctaLabel?: string;
+}
+
+const defaultItems: GalleryItem[] = [
+  // 6 imágenes para el layout
+  { src: '/assets/gallery-tall.jpg', alt: 'Pastel alto con flores' },
+  { src: '/assets/gallery-1.jpg', alt: 'Pastel de chocolate' },
+  { src: '/assets/gallery-2.jpg', alt: 'Pastel red velvet' },
+  { src: '/assets/gallery-3.jpg', alt: 'Pastel de zanahoria' },
+  { src: '/assets/gallery-4.jpg', alt: 'Pay de limón' },
+  { src: '/assets/gallery-5.jpg', alt: 'Cheesecake' },
+];
+
+const {
+  items = defaultItems,
+  instagramUrl = 'https://www.instagram.com',
+  title = 'Un vistazo a nuestros pasteles',
+  description = 'Explora algunos de los diseños más recientes creados en nuestro taller.',
+  ctaLabel = 'Ver Instagram',
+} = Astro.props as Props;
+
+const galleryItems = (items.length ? items : defaultItems).slice(0, 6);
+
+const layoutClasses = [
+  'item-tall',
+  'item-top-2',
+  'item-bottom-2',
+  'item-top-3',
+  'item-top-4',
+  'item-wide-bottom',
+];
+---
+<section id="galeria" class="gallery">
+  <div class="section-heading">
+    <span class="section-label">Galería</span>
+    <h2>{title}</h2>
+    <p>{description}</p>
+  </div>
+  <div class="gallery-grid">
+    {galleryItems.map(({ src, alt }, index) => (
+      <div class={`gallery-item ${layoutClasses[index] ?? ''}`}>
+        <img src={src} alt={alt} loading="lazy" />
+      </div>
+    ))}
+  </div>
+  <a class="gallery-link" href={instagramUrl} target="_blank" rel="noreferrer">
+    {ctaLabel}
+  </a>
+</section>
+
+<style>
+.gallery {
+  display: grid;
+  gap: 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 18rem));
+}
+
+.gallery-item {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantenemos 'cover' para llenar el espacio */
+  object-position: center; /* Centramos por defecto */
+  display: block;
+}
+
+/* --- Clases de posicionamiento del Grid --- */
+.item-tall {
+  grid-column: 1 / 2;
+  grid-row: 1 / span 2;
+}
+.item-top-2 {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+.item-bottom-2 {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+.item-top-3 {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+.item-top-4 {
+  grid-column: 4 / 5;
+  grid-row: 1 / 2;
+}
+.item-wide-bottom {
+  grid-column: 3 / 5;
+  grid-row: 2 / 3;
+}
+
+/* --- TIP APLICADO: OBJECT-POSITION ---
+  Ajusta estos valores (top, bottom, center, o porcentajes como 25% 75%) 
+  según el contenido de TUS imágenes.
+*/
+.item-tall img {
+  /* Si el pastel es alto, quizás quieras enfocar la parte superior */
+  object-position: center top;
+}
+
+.item-wide-bottom img {
+  /* Si es una foto ancha, quizás el foco esté más abajo */
+  object-position: center bottom;
+}
+
+.item-top-3 img {
+  /* Ejemplo con porcentaje: 50% horizontal (centro), 25% vertical (un poco arriba) */
+  object-position: 50% 25%;
+}
+/* Las imágenes sin regla específica (.item-top-2, .item-bottom-2, etc.)
+  usarán el 'object-position: center' definido en .gallery-item img
+*/
+
+
+.gallery-link {
+  justify-self: center;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+}
+.gallery-link:hover {
+  border-color: currentColor;
+}
+
+/* --- Responsive Layouts --- */
+@media (max-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 18rem;
+  }
+
+  .item-tall,
+  .item-top-2, .item-bottom-2,
+  .item-top-3, .item-top-4,
+  .item-wide-bottom {
+    grid-column: auto / span 1;
+    grid-row: auto / span 1;
+  }
+  
+  .item-wide-bottom {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 720px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 18rem;
+  }
+  
+  .item-wide-bottom {
+    grid-column: auto / span 1;
+  }
+}
+</style>

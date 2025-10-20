@@ -2,14 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroBanner from '../components/HeroBanner.astro';
 import AboutSection from '../components/AboutSection.astro';
+import GallerySection from '../components/GallerySection.astro';
 
 const galleryItems = [
-  'Pastel floral minimalista',
-  'Pastel acuarela',
-  'Pastel terrazzo',
-  'Pastel degradado',
-  'Pastel botanico',
-  'Pastel nude metálico',
+  // 7 imágenes para el layout de 1 + 2 + 2 + 2
+  { src: '/cake_main.jpeg', alt: 'Pastel alto con flores' },
+  { src: '/cake_2.jpeg', alt: 'Pastel de chocolate' },
+  { src: '/cake_3.jpeg', alt: 'Pastel red velvet' },
+  { src: '/cake_4.jpeg', alt: 'Pastel de zanahoria' },
+  { src: '/cake_5.jpeg', alt: 'Pay de limón' },
+  { src: '/cake_6.jpg', alt: 'Cheesecake' },
 ];
 
 const lineProducts = [
@@ -26,22 +28,7 @@ const lineProducts = [
 
   <AboutSection />
 
-  <section id="galeria" class="gallery">
-    <div class="section-heading">
-      <span class="section-label">Galería</span>
-      <h2>Un vistazo a nuestros pasteles</h2>
-      <p>Explora algunos de los diseños más recientes creados en nuestro taller.</p>
-    </div>
-    <div class="gallery-grid">
-      {galleryItems.map((item) => (
-        <figure>
-          <div class="gallery-thumb" aria-hidden="true"></div>
-          <figcaption>{item}</figcaption>
-        </figure>
-      ))}
-    </div>
-    <a class="gallery-link" href="https://www.instagram.com" target="_blank" rel="noreferrer">Ver Instagram</a>
-  </section>
+  <GallerySection items={galleryItems} />
 
   <section id="tienda" class="products">
     <div class="section-heading">
@@ -137,55 +124,6 @@ const lineProducts = [
 </BaseLayout>
 
 <style>
-.section-label {
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  color: var(--accent-color);
-}
-
-.section-heading {
-  display: grid;
-  gap: 0.75rem;
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.gallery {
-  display: grid;
-  gap: 2rem;
-}
-
-.gallery-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-}
-
-.gallery-thumb {
-  width: 100%;
-  padding-bottom: 100%;
-  border-radius: 1rem;
-  background: linear-gradient(135deg, rgba(231, 183, 160, 0.35), rgba(107, 90, 88, 0.25));
-  border: 1px solid var(--border-color);
-}
-
-.gallery figcaption {
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
-  text-align: center;
-}
-
-.gallery-link {
-  justify-self: center;
-  font-weight: 500;
-  border-bottom: 1px solid transparent;
-}
-
-.gallery-link:hover {
-  border-color: currentColor;
-}
-
 .products {
   display: grid;
   gap: 2rem;
