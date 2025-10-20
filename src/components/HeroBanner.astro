@@ -1,0 +1,56 @@
+<section id="hero" class="hero">
+  <p class="hero-tagline">Pastelería artesanal en CDMX</p>
+  <h1>Endulzamos la vida, un diseño a la vez.</h1>
+  <p class="hero-intro">
+    Pasteles personalizados diseñados con detalle, ingredientes frescos y una estética minimalista pensada para tus momentos especiales.
+  </p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="#tienda">Ver pasteles</a>
+    <a class="btn btn-outline" href="#personalizados">Personalizado</a>
+  </div>
+</section>
+
+<style>
+.hero {
+  text-align: center;
+  display: grid;
+  gap: 1rem;
+  align-items: center;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.hero-tagline {
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+}
+
+.hero-intro {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .hero-actions {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    text-align: left;
+  }
+}
+</style>
